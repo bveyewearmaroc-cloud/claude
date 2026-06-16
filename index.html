@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BV EYEWEAR — Maison de Lunettes · Maroc</title>
+  <meta name="description" content="BV Eyewear — a Moroccan eyewear house where Atlas craft meets modern optics. Handmade acetate, precision lenses, and frames designed to be felt." />
+  <meta name="theme-color" content="#0E0D0B" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BV EYEWEAR — See Differently" />
+  <meta property="og:description" content="Moroccan eyewear, reimagined. An immersive house of handcrafted frames." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Three.js as ES module via import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ░░ PRELOADER ░░ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__mark">
+        <svg viewBox="0 0 120 60" class="loader-glasses" aria-hidden="true">
+          <path class="loader-stroke" d="M6 30 C6 14 24 14 30 22 C36 30 50 30 58 30 C66 30 80 30 86 22 C92 14 110 14 110 30" fill="none"/>
+          <circle class="loader-stroke" cx="30" cy="34" r="16" fill="none"/>
+          <circle class="loader-stroke" cx="88" cy="34" r="16" fill="none"/>
+          <line class="loader-stroke" x1="46" y1="32" x2="72" y2="32"/>
+        </svg>
+      </div>
+      <div class="preloader__count"><span id="loadCount">0</span><i>%</i></div>
+      <div class="preloader__word" aria-hidden="true">
+        <span>SEE</span><span>DIFFERENTLY</span>
+      </div>
+    </div>
+    <div class="preloader__bar"><span id="loadBar"></span></div>
+  </div>
+
+  <!-- ░░ CUSTOM CURSOR ░░ -->
+  <div class="cursor" id="cursor"><span class="cursor__label"></span></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ░░ NAV ░░ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" data-cursor="home">
+      <span class="nav__logo">BV</span>
+      <span class="nav__brandtype">EYEWEAR</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#collections" class="nav__link" data-magnetic><span>Collections</span></a>
+      <a href="#craft" class="nav__link" data-magnetic><span>Atelier</span></a>
+      <a href="#configure" class="nav__link" data-magnetic><span>Configurateur</span></a>
+      <a href="#stores" class="nav__link" data-magnetic><span>Boutiques</span></a>
+    </nav>
+    <a href="#configure" class="nav__cta" data-magnetic data-cursor="try">
+      <span class="nav__cta-text">Essayer</span>
+      <span class="nav__cta-dot"></span>
+    </a>
+  </header>
+
+  <main id="top">
+
+    <!-- ░░ HERO ░░ -->
+    <section class="hero" id="hero">
+      <canvas id="scene" class="hero__canvas"></canvas>
+      <div class="hero__grain"></div>
+
+      <div class="hero__content">
+        <div class="hero__eyebrow reveal-line"><span>Maison de lunettes · Casablanca — Maroc</span></div>
+        <h1 class="hero__title">
+          <span class="line"><span class="word">See</span></span>
+          <span class="line"><span class="word italic">Differently</span></span>
+        </h1>
+        <p class="hero__sub reveal-line"><span>Frames handcrafted in the shadow of the Atlas — Italian acetate, Moroccan soul. Eyewear you don't just wear, you feel.</span></p>
+        <div class="hero__actions">
+          <a href="#collections" class="btn btn--solid" data-magnetic data-cursor="explore">
+            <span>Explore the collection</span>
+          </a>
+          <a href="#configure" class="btn btn--ghost" data-magnetic>
+            <span>Configure your pair</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <i></i>
+      </div>
+      <div class="hero__meta" aria-hidden="true">
+        <span>EST. <em>—</em> MAROC</span>
+        <span>34.020882° N · 6.841650° W</span>
+      </div>
+    </section>
+
+    <!-- ░░ MARQUEE ░░ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack">
+        <span>Handmade acetate</span><i>✦</i>
+        <span>Precision optics</span><i>✦</i>
+        <span>Atlas craftsmanship</span><i>✦</i>
+        <span>Anti-reflective</span><i>✦</i>
+        <span>Lifetime adjustments</span><i>✦</i>
+        <span>Handmade acetate</span><i>✦</i>
+        <span>Precision optics</span><i>✦</i>
+        <span>Atlas craftsmanship</span><i>✦</i>
+        <span>Anti-reflective</span><i>✦</i>
+        <span>Lifetime adjustments</span><i>✦</i>
+      </div>
+    </section>
+
+    <!-- ░░ MANIFESTO ░░ -->
+    <section class="manifesto" id="about">
+      <p class="manifesto__text" data-split>
+        We believe a frame is not an accessory — it is the way the world reads your face.
+        Every BV pair is cut, polished and tuned by hand, balancing centuries of Moroccan
+        artistry with optical precision built for the way you actually live.
+      </p>
+      <div class="manifesto__foot reveal-line"><span>— The BV Atelier</span></div>
+    </section>
+
+    <!-- ░░ COLLECTIONS ░░ -->
+    <section class="collections" id="collections">
+      <div class="section-head">
+        <span class="section-head__index">01 — Collections</span>
+        <h2 class="section-head__title" data-split-lines>Three houses, one vision</h2>
+      </div>
+
+      <div class="collections__grid">
+        <article class="collection" data-tilt data-cursor="view" style="--c1:#C9A24A; --c2:#7A5A22;">
+          <div class="collection__visual">
+            <div class="collection__glow"></div>
+            <svg class="frame-svg" viewBox="0 0 300 130" aria-hidden="true"></svg>
+          </div>
+          <div class="collection__meta">
+            <span class="collection__num">/ 01</span>
+            <h3 class="collection__name">Sahara</h3>
+            <p class="collection__desc">Warm honey acetate, oversized and sun-born. Built for golden light.</p>
+            <span class="collection__more">Discover →</span>
+          </div>
+        </article>
+
+        <article class="collection" data-tilt data-cursor="view" style="--c1:#5E7E74; --c2:#23332E;">
+          <div class="collection__visual">
+            <div class="collection__glow"></div>
+            <svg class="frame-svg" viewBox="0 0 300 130" aria-hidden="true"></svg>
+          </div>
+          <div class="collection__meta">
+            <span class="collection__num">/ 02</span>
+            <h3 class="collection__name">Atlas</h3>
+            <p class="collection__desc">Cold-forged titanium, weightless and exact. Engineered minimalism.</p>
+            <span class="collection__more">Discover →</span>
+          </div>
+        </article>
+
+        <article class="collection" data-tilt data-cursor="view" style="--c1:#B5563A; --c2:#3A1A12;">
+          <div class="collection__visual">
+            <div class="collection__glow"></div>
+            <svg class="frame-svg" viewBox="0 0 300 130" aria-hidden="true"></svg>
+          </div>
+          <div class="collection__meta">
+            <span class="collection__num">/ 03</span>
+            <h3 class="collection__name">Medina</h3>
+            <p class="collection__desc">Deep tortoise, hand-laid. A nod to the souk, refined for today.</p>
+            <span class="collection__more">Discover →</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ░░ CRAFT / ATELIER ░░ -->
+    <section class="craft" id="craft">
+      <div class="craft__sticky">
+        <div class="craft__index">
+          <span class="section-head__index">02 — Atelier</span>
+          <h2 class="craft__title" data-split-lines>From raw block to second skin</h2>
+          <div class="craft__progress"><span id="craftProgress"></span></div>
+        </div>
+      </div>
+      <div class="craft__steps">
+        <article class="craft__step">
+          <span class="craft__step-num">001</span>
+          <h3>The block</h3>
+          <p>A solid sheet of Mazzucchelli acetate is selected for its grain — no two patterns are alike.</p>
+        </article>
+        <article class="craft__step">
+          <span class="craft__step-num">002</span>
+          <h3>The cut</h3>
+          <p>CNC precision meets a sculptor's hand. The front is milled, then bevelled to catch light.</p>
+        </article>
+        <article class="craft__step">
+          <span class="craft__step-num">003</span>
+          <h3>The tumble</h3>
+          <p>Three days in wood drums brings the deep, liquid gloss that machines can't fake.</p>
+        </article>
+        <article class="craft__step">
+          <span class="craft__step-num">004</span>
+          <h3>The fit</h3>
+          <p>Hinges are riveted, lenses tuned to your prescription, temples warmed to your face.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ░░ CONFIGURATOR ░░ -->
+    <section class="configure" id="configure">
+      <div class="section-head section-head--center">
+        <span class="section-head__index">03 — Configurateur</span>
+        <h2 class="section-head__title" data-split-lines>Make it yours</h2>
+        <p class="section-head__lead reveal-line"><span>Rotate, recolor, and feel the frame react in real time. This is the pair, before it's yours.</span></p>
+      </div>
+
+      <div class="configure__stage">
+        <canvas id="configScene" class="configure__canvas"></canvas>
+        <div class="configure__hint" aria-hidden="true">Drag to rotate</div>
+      </div>
+
+      <div class="configure__controls">
+        <div class="swatches" id="swatches" role="group" aria-label="Frame colour">
+          <button class="swatch is-active" data-color="#1A1A1A" style="--s:#1A1A1A" aria-label="Onyx"></button>
+          <button class="swatch" data-color="#C9A24A" style="--s:#C9A24A" aria-label="Honey gold"></button>
+          <button class="swatch" data-color="#8A3A2A" style="--s:#8A3A2A" aria-label="Terracotta"></button>
+          <button class="swatch" data-color="#3E5C52" style="--s:#3E5C52" aria-label="Atlas green"></button>
+          <button class="swatch" data-color="#E7DBC6" style="--s:#E7DBC6" aria-label="Bone"></button>
+        </div>
+        <div class="configure__name">
+          <span class="configure__name-label">Selected finish</span>
+          <span class="configure__name-value" id="finishName">Onyx</span>
+        </div>
+        <a href="#stores" class="btn btn--solid" data-magnetic data-cursor="book">
+          <span>Book a fitting</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ░░ LOOKBOOK ░░ -->
+    <section class="lookbook" id="lookbook">
+      <div class="section-head">
+        <span class="section-head__index">04 — Lookbook</span>
+        <h2 class="section-head__title" data-split-lines>Worn in the wild</h2>
+      </div>
+      <div class="lookbook__grid">
+        <figure class="look" data-look="01" style="--h:#C9A24A"><div class="look__art"></div><figcaption>Essaouira, noon</figcaption></figure>
+        <figure class="look" data-look="02" style="--h:#5E7E74"><div class="look__art"></div><figcaption>Atlas pass</figcaption></figure>
+        <figure class="look" data-look="03" style="--h:#B5563A"><div class="look__art"></div><figcaption>Medina light</figcaption></figure>
+        <figure class="look" data-look="04" style="--h:#9A86C4"><div class="look__art"></div><figcaption>Blue hour</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ░░ STORES / CONTACT ░░ -->
+    <section class="stores" id="stores">
+      <div class="stores__head">
+        <span class="section-head__index">05 — Boutiques</span>
+        <h2 class="stores__title" data-split-lines>Come see for yourself</h2>
+      </div>
+      <ul class="stores__list" id="storeList">
+        <li class="store" data-city="Casablanca">
+          <span class="store__city">Casablanca</span>
+          <span class="store__addr">Triangle d'Or, Boulevard d'Anfa</span>
+          <span class="store__hours">10:00 — 20:00</span>
+          <span class="store__arrow">↗</span>
+        </li>
+        <li class="store" data-city="Rabat">
+          <span class="store__city">Rabat</span>
+          <span class="store__addr">Agdal, Avenue de France</span>
+          <span class="store__hours">10:00 — 20:00</span>
+          <span class="store__arrow">↗</span>
+        </li>
+        <li class="store" data-city="Marrakech">
+          <span class="store__city">Marrakech</span>
+          <span class="store__addr">Guéliz, Rue de la Liberté</span>
+          <span class="store__hours">10:00 — 21:00</span>
+          <span class="store__arrow">↗</span>
+        </li>
+        <li class="store" data-city="Tanger">
+          <span class="store__city">Tanger</span>
+          <span class="store__addr">Iberia, Boulevard Mohammed VI</span>
+          <span class="store__hours">10:00 — 20:00</span>
+          <span class="store__arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer" id="footer">
+    <div class="footer__cta">
+      <p class="footer__kicker reveal-line"><span>Ready to be seen?</span></p>
+      <a href="#configure" class="footer__big" data-split-lines data-cursor="try">Find your frame</a>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <span class="footer__label">Maison</span>
+        <a href="#collections">Collections</a>
+        <a href="#craft">Atelier</a>
+        <a href="#configure">Configurateur</a>
+        <a href="#stores">Boutiques</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">Contact</span>
+        <a href="mailto:bonjour@bveyewear.ma">bonjour@bveyewear.ma</a>
+        <a href="tel:+212500000000">+212 5 00 00 00 00</a>
+        <span>Casablanca · Maroc</span>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">Social</span>
+        <a href="#" data-magnetic>Instagram</a>
+        <a href="#" data-magnetic>Pinterest</a>
+        <a href="#" data-magnetic>TikTok</a>
+      </div>
+      <div class="footer__col footer__newsletter">
+        <span class="footer__label">Le Cercle BV</span>
+        <p>First access to drops, fittings & private events.</p>
+        <form class="footer__form" id="newsletter">
+          <input type="email" placeholder="Your email" aria-label="Email" required />
+          <button type="submit" aria-label="Subscribe">→</button>
+        </form>
+        <span class="footer__formmsg" id="formMsg" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="footer__wordmark" aria-hidden="true">BV&nbsp;EYEWEAR</div>
+    <div class="footer__legal">
+      <span>© <span id="year"></span> BV Eyewear — Maroc. Tous droits réservés.</span>
+      <span>Designed &amp; built as an immersive experience.</span>
+    </div>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger + Lenis (load in browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script type="module" src="js/scene.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
