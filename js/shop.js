@@ -233,8 +233,10 @@ Livraison: ${ship ? money(ship) : "Gratuite"}
     // Optional: also log/email the order to a backend endpoint
     if (CFG.orderEndpoint) {
       try {
+        // text/plain avoids a CORS preflight, so it works with a Google
+        // Apps Script web app (the recommended order-log endpoint).
         fetch(CFG.orderEndpoint, {
-          method: "POST", headers: { "Content-Type": "application/json" },
+          method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({ ref: order.ref, ...order.customer, items: order.items, total: order.total }),
         }).catch(() => {});
       } catch (e) {}
@@ -288,8 +290,31 @@ Livraison: ${ship ? money(ship) : "Gratuite"}
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDrawer(); closeCheckout(); } });
   }
 
+  /* ---- SEO: Product structured data from the catalog ---- */
+  function injectProductSchema() {
+    if (!PRODUCTS.length) return;
+    const items = PRODUCTS.map((p, i) => ({
+      "@type": "ListItem", position: i + 1,
+      item: {
+        "@type": "Product", name: p.name, category: "Eyewear", description: p.desc,
+        brand: { "@type": "Brand", name: CFG.brand || "BV Eyewear" },
+        offers: {
+          "@type": "Offer", price: p.price, priceCurrency: "MAD",
+          availability: "https://schema.org/InStock",
+          areaServed: "MA", url: "https://www.bveyewear.ma/#boutique",
+        },
+      },
+    }));
+    const data = { "@context": "https://schema.org", "@type": "ItemList", name: "BV Eyewear — Boutique", itemListElement: items };
+    const tag = document.createElement("script");
+    tag.type = "application/ld+json";
+    tag.textContent = JSON.stringify(data);
+    document.head.appendChild(tag);
+  }
+
   /* ---- boot ---- */
   function start() {
+    injectProductSchema();
     if (CFG.whatsapp === "212600000000") {
       console.warn("[BV shop] Set BV_CONFIG.whatsapp in js/products.js to receive orders.");
     }

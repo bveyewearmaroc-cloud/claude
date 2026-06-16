@@ -1,0 +1,13 @@
+# BV Eyewear — Netlify (static site, no build step)
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/assets/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

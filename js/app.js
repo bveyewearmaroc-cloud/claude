@@ -191,6 +191,10 @@
       yPercent: -100, duration: 1.0, ease: "expo.inOut",
       onComplete: () => { pre.style.display = "none"; },
     }, "-=0.1");
+
+    // Safety net: on a slow device the rAF ticker can be starved by WebGL —
+    // force the intro to finish on a real-clock timer so the site never hangs.
+    setTimeout(() => { if (tl.progress() < 1) tl.progress(1); }, 4500);
   }
 
   /* ---------------------------------------------------------
