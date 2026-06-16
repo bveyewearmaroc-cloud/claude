@@ -30,10 +30,11 @@ art direction in warm Moroccan ink, bone and gold.
 | 3D | [Three.js](https://threejs.org) (ES modules via import map) |
 | Animation | [GSAP 3](https://gsap.com) + ScrollTrigger |
 | Smooth scroll | [Lenis](https://github.com/darkroomengineering/lenis) |
-| Type | Fraunces (display serif) · Space Grotesk (grotesk) |
+| Type | Fraunces (display serif) · Space Grotesk (grotesk) — self-hosted variable fonts |
 | Build | None — static HTML/CSS/JS. Just serve the folder. |
 
-All libraries load from CDN in the browser, so there is no build step.
+**Fully self-contained.** Three.js, GSAP + ScrollTrigger, Lenis and the fonts are all
+vendored into `assets/vendor/` — no CDN, no external requests, works offline.
 
 ## ▶️ Run it
 
@@ -43,8 +44,7 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-Any static server works (`npx serve`, etc.). An internet connection is needed the
-first time so the browser can pull the Three.js / GSAP / Lenis CDNs and Google Fonts.
+Any static server works (`npx serve`, etc.). No internet connection required.
 
 ## 🗂 Structure
 
@@ -53,7 +53,9 @@ index.html        # markup + import map + CDN includes
 css/style.css     # full art direction & responsive system
 js/scene.js       # Three.js engine: builds the glasses, hero + configurator scenes
 js/app.js         # preloader, Lenis, GSAP scroll animations, cursor, magnetics
-assets/img/       # drop real photography / AI renders here
+js/gen-assets.mjs # node generator for the lookbook campaign posters
+assets/img/       # generated SVG posters (+ drop real photography here)
+assets/vendor/    # self-hosted three / gsap / lenis / fonts (no CDN)
 ```
 
 ## 🖼 Imagery — hand-crafted, zero dependencies

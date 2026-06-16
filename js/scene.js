@@ -210,9 +210,10 @@ class GlassesScene {
       this.mouse.x += (this.target.x - this.mouse.x) * 0.05;
       this.mouse.y += (this.target.y - this.mouse.y) * 0.05;
       const floatY = reduceMotion ? 0 : Math.sin(t * 0.6) * 0.05;
-      const baseSpin = reduceMotion ? 0 : t * 0.12;
-      this.glasses.rotation.y = baseSpin + this.mouse.x * 0.5 + this.scrollRot * Math.PI * 1.4;
-      this.glasses.rotation.x = this.mouse.y * 0.3 + this.scrollRot * 0.4;
+      // gentle oscillation around a front-facing pose (never edge-on)
+      const baseSpin = reduceMotion ? 0 : Math.sin(t * 0.35) * 0.5;
+      this.glasses.rotation.y = baseSpin + this.mouse.x * 0.45 + this.scrollRot * Math.PI * 1.2;
+      this.glasses.rotation.x = -0.08 + this.mouse.y * 0.28 + this.scrollRot * 0.4;
       this.glasses.position.y = floatY - this.scrollRot * 0.4;
       this.glasses.position.z = -this.scrollRot * 1.2;
     }

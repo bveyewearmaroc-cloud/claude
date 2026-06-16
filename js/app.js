@@ -197,9 +197,9 @@
   --------------------------------------------------------- */
   function heroIntro() {
     const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-    tl.to(".hero__title .word", { yPercent: 0, duration: 1.2, stagger: 0.08 }, 0)
-      .to(".hero__eyebrow span", { yPercent: 0, duration: 1.0 }, 0.15)
-      .to(".hero__sub span", { yPercent: 0, duration: 1.0 }, 0.35)
+    tl.fromTo(".hero__title .word", { yPercent: 110, y: 0 }, { yPercent: 0, duration: 1.2, stagger: 0.08 }, 0)
+      .fromTo(".hero__eyebrow span", { yPercent: 110, y: 0 }, { yPercent: 0, duration: 1.0 }, 0.15)
+      .fromTo(".hero__sub span", { yPercent: 110, y: 0 }, { yPercent: 0, duration: 1.0 }, 0.35)
       .from(".hero__actions .btn", { y: 24, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.5)
       .from(".hero__scroll, .hero__meta", { opacity: 0, duration: 1 }, 0.7)
       .from(".nav", { yPercent: -100, opacity: 0, duration: 1 }, 0.3);
@@ -209,9 +209,10 @@
      Scroll-driven animations
   --------------------------------------------------------- */
   function initScroll() {
-    // Reveal lines (generic)
+    // Reveal lines (generic) — skip hero text, handled by the intro timeline
     gsap.utils.toArray(".reveal-line").forEach((el) => {
-      gsap.to(el.querySelector("span"), {
+      if (el.closest(".hero")) return;
+      gsap.fromTo(el.querySelector("span"), { yPercent: 110, y: 0 }, {
         yPercent: 0, duration: 1, ease: "expo.out",
         scrollTrigger: { trigger: el, start: "top 88%" },
       });

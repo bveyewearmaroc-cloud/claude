@@ -161,7 +161,7 @@ body.has-cursor a,body.has-cursor button{ cursor:none; }
 }
 .hero__title{
   font-family:var(--ff-display); font-weight:300;
-  font-size:clamp(64px,15vw,210px); line-height:.84; letter-spacing:-.035em;
+  font-size:clamp(58px,13vw,186px); line-height:.86; letter-spacing:-.04em;
 }
 .hero__title .line{ display:block; overflow:hidden; }
 .hero__title .word{ display:inline-block; }

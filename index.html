@@ -13,18 +13,15 @@
   <meta property="og:description" content="Moroccan eyewear, reimagined. An immersive house of handcrafted frames." />
   <meta property="og:type" content="website" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
-
+  <link rel="stylesheet" href="assets/vendor/fonts/fonts.css" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Three.js as ES module via import map -->
+  <!-- Three.js as ES module via import map (vendored locally — no CDN dependency) -->
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      "three": "./assets/vendor/three/three.module.js",
+      "three/addons/": "./assets/vendor/three/addons/"
     }
   }
   </script>
@@ -337,10 +334,10 @@
     </div>
   </footer>
 
-  <!-- GSAP + ScrollTrigger + Lenis (load in browser) -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger + Lenis (vendored locally — no CDN dependency) -->
+  <script src="assets/vendor/gsap/gsap.min.js"></script>
+  <script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis/lenis.umd.js"></script>
 
   <script type="module" src="js/scene.js"></script>
   <script src="js/app.js" defer></script>
