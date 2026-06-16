@@ -54,6 +54,9 @@ css/style.css     # full art direction & responsive system
 js/scene.js       # Three.js engine: builds the glasses, hero + configurator scenes
 js/app.js         # preloader, Lenis, GSAP scroll animations, cursor, magnetics
 js/gen-assets.mjs # node generator for the lookbook campaign posters
+js/products.js    # 🛒 store config + product catalog — edit this to add products
+js/shop.js        # boutique engine: catalog, cart, COD checkout, WhatsApp routing
+css/shop.css      # boutique / cart / checkout styling
 assets/img/       # generated SVG posters (+ drop real photography here)
 assets/vendor/    # self-hosted three / gsap / lenis / fonts (no CDN)
 ```
@@ -77,6 +80,50 @@ layout, parallax and hover reveals already support it.
 
 > Higgsfield AI generation was attempted but the account returned `User not found` /
 > no credits, so the imagery above was produced with hand-written SVG instead.
+
+## 🛒 Boutique — Cash on Delivery (COD)
+
+A full storefront is built into the site: a catalog, a slide-in cart, and a COD
+checkout that routes each order to **WhatsApp** (the dominant COD channel in Morocco).
+No backend, no platform fees, no online payment — the customer pays cash on delivery.
+
+### Add or edit a product (no admin needed)
+Open **`js/products.js`** and edit the `BV_PRODUCTS` array. Each entry:
+
+```js
+{
+  id: "sahara-oro",            // unique id
+  name: "Sahara Oro",
+  collection: "Sahara",
+  frame: "round",              // round | rect | cat  (drives the silhouette)
+  price: 790,                  // in DH
+  oldPrice: 990,               // optional — shows a strikethrough
+  badge: "Best-seller",        // optional ribbon
+  colors: [{ name: "Honey", hex: "#C9A24A" }, { name: "Onyx", hex: "#1A1A1A" }],
+  desc: "Oversized round acetate…",
+}
+```
+Save, refresh — the new product appears in the **Boutique** section automatically.
+
+### Receive orders
+In the same file, set `BV_CONFIG`:
+
+- **`whatsapp`** — your number, country code first, no `+`/spaces (e.g. `"2126XXXXXXXX"`).
+  Orders open in WhatsApp pre-filled with items, totals and the customer's address.
+- **`shippingFee`**, **`freeShippingFrom`** — delivery pricing (free above a threshold).
+- **`cities`** — the delivery cities shown in checkout.
+- **`orderEndpoint`** *(optional)* — a Formspree / Web3Forms / Google Apps Script URL
+  to ALSO log/email every order as JSON (belt-and-braces alongside WhatsApp).
+
+Orders are formatted like:
+```
+🕶️ Nouvelle commande BV Eyewear  [BV-AB12CD]
+• 1× Sahara Oro (Honey) — 790 DH
+TOTAL (à la livraison): 790 DH
+👤 Name  📞 Phone  🏙️ City  📍 Address
+```
+
+The cart persists in `localStorage`, so a customer's bag survives a refresh.
 
 ## 🎨 Art direction
 
