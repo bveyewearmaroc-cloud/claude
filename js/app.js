@@ -24,17 +24,35 @@
   document.body.classList.add("is-loading");
 
   /* ---------------------------------------------------------
-     Inject the SVG line-art frames into each collection card
+     Inject a distinct SVG silhouette into each collection card
   --------------------------------------------------------- */
-  const FRAME_MARKUP = `
-    <rect x="28" y="34" width="98" height="66" rx="30" fill="none" stroke-width="3"/>
-    <rect x="174" y="34" width="98" height="66" rx="30" fill="none" stroke-width="3"/>
-    <path d="M126 52 C140 40 160 40 174 52" fill="none" stroke-width="3"/>
-    <path d="M28 56 L6 46" fill="none" stroke-width="3" stroke-linecap="round"/>
-    <path d="M272 56 L294 46" fill="none" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="77" cy="67" r="3"/><circle cx="223" cy="67" r="3"/>
-  `;
-  document.querySelectorAll(".frame-svg").forEach((svg) => { svg.innerHTML = FRAME_MARKUP; });
+  const FRAMES = {
+    // Sahara — oversized round
+    round: `
+      <circle cx="78" cy="66" r="42" fill="none" stroke-width="4"/>
+      <circle cx="222" cy="66" r="42" fill="none" stroke-width="4"/>
+      <path d="M120 60 C140 48 160 48 180 60" fill="none" stroke-width="4"/>
+      <path d="M36 60 L8 50" fill="none" stroke-width="4" stroke-linecap="round"/>
+      <path d="M264 60 L292 50" fill="none" stroke-width="4" stroke-linecap="round"/>`,
+    // Atlas — thin rectangular / titanium
+    rect: `
+      <rect x="28" y="44" width="104" height="46" rx="9" fill="none" stroke-width="2.5"/>
+      <rect x="168" y="44" width="104" height="46" rx="9" fill="none" stroke-width="2.5"/>
+      <path d="M132 56 L168 56" fill="none" stroke-width="2.5"/>
+      <path d="M28 52 L6 46" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M272 52 L294 46" fill="none" stroke-width="2.5" stroke-linecap="round"/>`,
+    // Medina — bold cat-eye
+    cat: `
+      <rect x="30" y="40" width="96" height="60" rx="24" fill="none" stroke-width="6"/>
+      <rect x="174" y="40" width="96" height="60" rx="24" fill="none" stroke-width="6"/>
+      <path d="M126 54 C140 44 160 44 174 54" fill="none" stroke-width="6"/>
+      <path d="M30 52 L12 38" fill="none" stroke-width="6" stroke-linecap="round"/>
+      <path d="M270 52 L288 38" fill="none" stroke-width="6" stroke-linecap="round"/>`,
+  };
+  document.querySelectorAll(".collection").forEach((card) => {
+    const svg = card.querySelector(".frame-svg");
+    if (svg) svg.innerHTML = FRAMES[card.dataset.frame] || FRAMES.round;
+  });
 
   /* ---------------------------------------------------------
      Split-text helpers

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="look-03">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D98A5A"/><stop offset="1" stop-color="#8A3A22"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFCF94"/><stop offset="0.55" stop-color="#FFCF94" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFCF94" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="look-03-lens" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#FFD0A0"/><stop offset="0.5" stop-color="#C05A38"/><stop offset="1" stop-color="#5A1E12"/>
+    </linearGradient>
+    <linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="0.7" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0E0D0B" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.12"/></feComponentTransfer>
+    <feComposite operator="over" in2="SourceGraphic"/></filter>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#sky)"/>
+  <circle cx="300" cy="250" r="360" fill="url(#sun)"/>
+  
+    <path d="M 120 800 L 120 360 C 120 250 220 200 300 200 C 380 200 480 250 480 360 L 480 800
+             L 440 800 L 440 360 C 440 280 370 240 300 240 C 230 240 160 280 160 360 L 160 800 Z"
+          fill="#3A1A12" opacity="0.55"/>
+    <g opacity="0.35" fill="#C9A24A">
+      <circle cx="150" cy="700" r="6"/><circle cx="450" cy="700" r="6"/>
+      <circle cx="150" cy="640" r="6"/><circle cx="450" cy="640" r="6"/>
+    </g>
+  
+  <g>
+    <!-- shoulders -->
+    <path d="M 110 800 C 120 660 200 612 300 612 C 400 612 480 660 490 800 Z" fill="#5A241A"/>
+    <!-- neck -->
+    <rect x="262" y="500" width="76" height="150" rx="30" fill="#5A241A"/>
+    <!-- head -->
+    <ellipse cx="300" cy="430" rx="96" ry="116" fill="#5A241A"/>
+    <!-- draped scarf over the crown -->
+    <path d="M 196 420 C 196 322 260 286 300 286 C 340 286 404 322 404 420
+             C 404 392 372 360 300 360 C 228 360 196 392 196 420 Z" fill="#8A3A2A"/>
+    <path d="M 196 420 C 150 470 150 620 188 800 L 250 800 C 214 600 224 470 240 430 Z" fill="#8A3A2A"/>
+    <path d="M 404 420 C 450 470 450 620 412 800 L 350 800 C 386 600 376 470 360 430 Z" fill="#8A3A2A"/>
+    <!-- rim light along the jaw -->
+    <path d="M 392 470 C 388 520 360 556 312 566" fill="none" stroke="#1A0A06" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  </g>
+  
+  <g>
+    <path d="M 200 382 L 126 366" stroke="#1A0A06" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 400 382 L 474 366" stroke="#1A0A06" stroke-width="7" stroke-linecap="round"/>
+    <rect x="204" y="373" width="92" height="74" rx="26" fill="url(#look-03-lens)"/>
+     <rect x="204" y="373" width="92" height="74" rx="26" fill="none" stroke="#1A0A06" stroke-width="7"/>
+    <rect x="304" y="373" width="92" height="74" rx="26" fill="url(#look-03-lens)"/>
+     <rect x="304" y="373" width="92" height="74" rx="26" fill="none" stroke="#1A0A06" stroke-width="7"/>
+    <path d="M 296 392 q 4 -14 8 0" fill="none" stroke="#1A0A06" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- monogram -->
+  <text x="40" y="64" font-family="Georgia, serif" font-size="30" fill="#EFE7DA" opacity="0.85">BV</text>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <rect width="600" height="800" filter="url(#g)" opacity="0.5"/>
+</svg>

@@ -56,20 +56,25 @@ js/app.js         # preloader, Lenis, GSAP scroll animations, cursor, magnetics
 assets/img/       # drop real photography / AI renders here
 ```
 
-## 🖼 Swapping in real imagery (Higgsfield)
+## 🖼 Imagery — hand-crafted, zero dependencies
 
-The visuals are intentionally **code-generated** (WebGL frames, CSS/SVG art) so the
-site is striking with zero photography. To layer in real product/lifestyle shots:
+All visuals are **code-generated**, so the site is striking with no stock photos:
 
-1. Generate assets (hero portrait, product shots, lookbook) with the Higgsfield
-   tools and save them into `assets/img/`.
-   > Note: in the session that produced this build, the Higgsfield account returned
-   > `User not found` / no available credits, so generation could not run. Once the
-   > account is provisioned, the lookbook tiles (`.look__art`) and collection cards
-   > are the natural drop-in points.
-2. Replace the gradient `.look__art` backgrounds (or collection `.collection__visual`)
-   with `<img>` / `background-image`. The layout, parallax and hover reveals already
-   support it.
+- **Lookbook posters** — four editorial "campaign" frames are generated as SVG by
+  `js/gen-assets.mjs` (`node js/gen-assets.mjs` → `assets/img/look-0X.svg`). Each is a
+  silhouetted figure in a Moroccan headscarf wearing statement sunglasses, set against
+  a distinct scene (Essaouira noon, Atlas pass, Medina arch, blue hour) with reflective
+  lens gradients and built-in film grain.
+- **Collection silhouettes** — each collection card draws its own frame shape
+  (round / rectangular / cat-eye) as inline SVG line-art.
+- **3D frames** — the hero and configurator are live Three.js, not images.
+
+To swap in real photography later, drop files into `assets/img/` and point the
+`.look__art` background-image (or collection `.collection__visual`) at them — the
+layout, parallax and hover reveals already support it.
+
+> Higgsfield AI generation was attempted but the account returned `User not found` /
+> no credits, so the imagery above was produced with hand-written SVG instead.
 
 ## 🎨 Art direction
 
